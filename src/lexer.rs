@@ -38,6 +38,7 @@ impl Cursor {
             '~' => TokenKind::Tilde,
             '^' => TokenKind::Caret,
             '?' => TokenKind::Question,
+            '#' => TokenKind::Pound,
             '$' => TokenKind::Dollar,
             '@' => TokenKind::At,
             _ => TokenKind::Unknown,

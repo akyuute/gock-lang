@@ -109,6 +109,8 @@ pub enum TokenKind {
     RightShift,
     /// ?
     Question,
+    /// #
+    Pound,
     /// $
     Dollar,
     /// @
@@ -152,6 +154,7 @@ impl fmt::Debug for TokenKind {
             TokenKind::Tilde => "~",
             TokenKind::Caret => "^",
             TokenKind::Question => "?",
+            TokenKind::Pound => "#",
             TokenKind::Dollar => "$",
             TokenKind::At => "@",
             _ => "Unkown",
