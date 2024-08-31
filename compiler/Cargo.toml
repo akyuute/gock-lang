@@ -1,0 +1,10 @@
+[package]
+name = "gock_compiler"
+version = "0.0.0"
+license = "MIT"
+edition = "2021"
+repository = "https://github.com/akyuute/gock-lang"
+
+[lib]
+
+[dependencies]

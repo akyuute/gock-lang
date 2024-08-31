@@ -1,4 +1,4 @@
-use gock_lang::token::*;
+use gock_compiler::token::*;
 
 fn main() {
     let my_tok = Token{

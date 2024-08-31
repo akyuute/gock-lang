@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "gock-lang"
-version = "0.1.0"
+name = "gock_compiler"
+version = "0.0.0"
