@@ -1,57 +1,50 @@
 use std::str::Chars;
 
-use crate::token::{Token, TokenKind}
+use crate::token::{Token, TokenKind};
+
 pub(crate) const EOF_CHAR: char = '\0';
 
-pub struct Cursor {
+pub struct Cursor<'a> {
     len_remaining: usize,
-    chars: Chars,
+    chars: Chars<'a>,
     //#[cfg(debug_assertions)]
     //prev: char,
 
 }
 
-impl Cursor {
-    pub fn advance_token(&mut self) -> Token {
-        let first_char = match self.bump() {
-            Some(c) => c,
-            None => return Token::new(TokenKind::Eof, 0),
-        };
+impl<'a> Cursor<'a> {
 
-        let token_kind = match first_char {
-
-            '"' => TokenKind::DoubleQuote,
-            '\'' => TokenKind::SingleQuote,
-            '`' => TokenKind::Tick,
-            '(' => TokenKind::OpenPar,
-            ')' => TokenKind::ClosePar,
-            '[' => TokenKind::OpenSqb,
-            ']' => TokenKind::CloseSqb,
-            '{' => TokenKind::OpenBrace,
-            '}' => TokenKind::CloseBrace,
-            ':' => TokenKind::Colon,
-            ',' => TokenKind::Comma,
-            ';' => TokenKind::Semi,
-            '+' => TokenKind::Plus,
-            '-' => TokenKind::Minus,
-            '*' => TokenKind::Star,
-            '/' => TokenKind::Slash,
-            '%' => TokenKind::Percent,
-            '!' => TokenKind::Bang,
-            '|' => TokenKind::Pipe,
-            '&' => TokenKind::Amper,
-            '<' => TokenKind::Less,
-            '>' => TokenKind::Greater,
-            '=' => TokenKind::Equal,
-            '.' => TokenKind::Dot,
-            '~' => TokenKind::Tilde,
-            '^' => TokenKind::Caret,
-            '?' => TokenKind::Question,
-            '#' => TokenKind::Pound,
-            '$' => TokenKind::Dollar,
-            '@' => TokenKind::At,
-            _ => TokenKind::Unknown,
-
+    pub fn new(input: &'a str) -> Cursor<'a> {
+        Cursor {
+            len_remaining: input.len(),
+            chars: input.chars(),
         }
     }
+
+    pub fn first(&self) -> char {
+        self.chars.clone().next().unwrap_or(EOF_CHAR)
+    }
+
+    pub fn second(&self) -> char {
+        let mut iter = self.chars.clone();
+        iter.next();
+        iter.next().unwrap_or(EOF_CHAR)
+    }
+
+    pub fn third(&self) -> char {
+        let mut iter = self.chars.clone();
+            iter.next();
+            iter.next();
+            iter.next().unwrap_or(EOF_CHAR)
+    }
+
+    pub fn is_eof(&self) -> bool {
+        self.chars.as_str().is_empty()
+    }
+
+    pub fn bump(&mut self) -> Option<char> {
+        let c = self.chars.next()?;
+        Some(c)
+    }
+
 }
