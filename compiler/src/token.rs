@@ -143,7 +143,6 @@ pub enum LiteralKind {
     Int,
     Float,
     Bool,
-    None,
     Str,
 }
 
