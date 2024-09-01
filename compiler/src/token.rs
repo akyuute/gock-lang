@@ -154,5 +154,8 @@ pub struct Token {
 }
 
 impl Token {
+    pub fn new(kind: TokenKind, len: u32) -> Token {
+        Token { kind, len }
+    }
 }
 
