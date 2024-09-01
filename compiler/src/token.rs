@@ -53,59 +53,32 @@ pub enum TokenKind {
     Semi,
     /// +
     Plus,
-    /// ++
-    DoublePlus,
     /// -
     Minus,
-    /// --
-    DoubleMinus,
     /// *
     Star,
-    /// **
-    DoubleStar,
     /// /
     Slash,
-    /// //
-    DoubleSlash,
     /// %
     Percent,
-    /// %%
-    DoublePercent,
     /// !
     Bang,
     /// |
     Pipe,
-    /// ||
-    DoublePipe,
     /// &
     Amper,
-    /// &&
-    DoubleAmper,
     /// <
     Less,
     /// >
     Greater,
     /// =
     Equal,
-    /// ->
-    Arrow,
     /// .
     Dot,
-    /// ==
-    DoubleEqual,
-    /// !=
-    NotEqual,
-    /// <=
-    LessEqual,
-    /// >=
-    GreaterEqual,
     /// ~
     Tilde,
     /// ^
     Caret,
-    /// <<
-    LeftShift,
-    /// >>
     RightShift,
     /// ?
     Question,
@@ -119,7 +92,7 @@ pub enum TokenKind {
     /// An unrecognized token
     Unknown,
 
-    /// End of input
+    /// End of input, represented by "\0"
     Eof,
 }
 
